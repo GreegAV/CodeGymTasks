@@ -1,7 +1,5 @@
 package com.codegym.task.task01.task0142;
 
-import java.util.Scanner;
-
 /*
 Write a program that displays: "Amigo is very smart".
 
