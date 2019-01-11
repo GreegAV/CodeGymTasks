@@ -50,21 +50,20 @@ import java.util.Scanner;
 public class Solution {
     public static void main(String[] args) throws Exception {
         //write your code here
-        Scanner scanner = new Scanner(System.in);
-        double sum = 0;
-        int count = 0;
-        while (true) {
-            int number = scanner.nextInt();
-            if (number == -1 & count != 0) {
-                {
-                    System.out.println(sum / count);
-                    break;
-                }
-            } else {
-                sum += number;
-                count += 1;
+        Scanner scn = new Scanner(System.in);
+        int num = 0, count = 0;
+        double sum = 0.0;
+
+        while (num != -1) {
+            num = scn.nextInt();
+            if (num != -1) {
+                sum += num;
+                count++;
             }
         }
+
+        System.out.println(sum / count);
+
     }
 }
 
