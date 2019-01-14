@@ -1,0 +1,31 @@
+package com.codegym.task.task06.task0602;
+
+/* 
+Zombie cats, zombie dogs
+In each class (Cat and Dog), write a finalize method that displays text about a particular object being destroyed.
+
+Requirements:
+1. The Cat class must have a void finalize method.
+2. The Dog class must have a void finalize method.
+3. The Cat and Dog classes must not have constructors or must have constructors without parameters.
+4. The Cat class's finalize method should display "A Cat was destroyed".
+5. The Dog class's finalize method should display "A Dog was destroyed".
+
+*/
+
+public class Cat {
+    public static void main(String[] args) {
+    }
+
+    //write your code here
+    public void finalize() {
+        System.out.println("A Cat was destroyed");
+    }
+}
+
+class Dog {
+    //write your code here
+    public void finalize() {
+        System.out.println("A Dog was destroyed");
+    }
+}
