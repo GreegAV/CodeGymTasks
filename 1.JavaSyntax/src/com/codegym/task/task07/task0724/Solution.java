@@ -37,8 +37,7 @@ public class Solution {
             humans.add(new Human("Name" + i, i % 2 == 0, i + 40));
         }
         for (int i = 0; i < 2; i++) {
-            humans.add(new Human("Name" + i + 4, i % 2 == 0, i + 20, humans.get(i), humans.get(i + 1)));
-            // on i=1 Mom becomes Dad on next children :))
+            humans.add(new Human("Name" + i + 4, i % 2 == 0, i + 20, humans.get(humans.size() - 4+i), humans.get(humans.size()+i-3)));
         }
         for (int i = 0; i < 3; i++) {
             humans.add(new Human("Name" + i + 4, i % 2 == 0, i + 20, humans.get(4), humans.get(5)));
