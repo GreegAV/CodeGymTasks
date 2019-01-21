@@ -3,9 +3,7 @@ package com.codegym.task.task08.task0829;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /* 
@@ -25,7 +23,6 @@ Seattle
 
 Example output:
 Gates
-
 
 Requirements:
 1. The program should display text on the screen.
@@ -50,7 +47,7 @@ public class Solution {
 
         String cityFamily = reader.readLine();
 
-        for (Map.Entry<String, String> m: map.entrySet()){
+        for (Map.Entry<String, String> m : map.entrySet()) {
             if (m.getValue().equals(cityFamily))
                 System.out.println(m.getKey());
         }

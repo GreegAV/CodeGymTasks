@@ -37,12 +37,10 @@ public class Solution {
         months.add("December");
 
         Scanner reader = new Scanner(System.in);
-
         String month = reader.nextLine();
 
         if (months.contains(month)) {
             System.out.printf("%s is month %d ", month, months.indexOf(month) + 1);
         }
-
     }
 }
