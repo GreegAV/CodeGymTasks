@@ -23,7 +23,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        int num = 10;
         try {
             divideByZero();
         } catch (Exception e) {
