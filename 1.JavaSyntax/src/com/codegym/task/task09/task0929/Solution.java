@@ -29,19 +29,17 @@ public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        String sourceFileName = reader.readLine();
-        String destinationFileName = reader.readLine();
-
         InputStream fileInputStream = null;
-
-        try {
-            fileInputStream = getInputStream(sourceFileName);
-        } catch (FileNotFoundException e) {
-            System.out.println("File does not exist.");
-            fileInputStream = getInputStream(reader.readLine());
+        for (int i = 0; i < 1; i++) {
+            try {
+                fileInputStream = getInputStream(reader.readLine());
+                break;
+            } catch (FileNotFoundException e) {
+                System.out.println("File does not exist.");
+                fileInputStream = getInputStream(reader.readLine());
+            }
         }
-
-        OutputStream fileOutputStream = getOutputStream(destinationFileName);
+        OutputStream fileOutputStream = getOutputStream(reader.readLine());
 
         while (fileInputStream.available() > 0) {
             fileOutputStream.write(fileInputStream.read());
