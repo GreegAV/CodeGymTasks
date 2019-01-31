@@ -3,9 +3,8 @@ package com.codegym.task.task09.task0930;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-/* 
+/*
 Task about algorithms
 Task: The user enters a list of words (and numbers) from the keyboard.
 The words are displayed in ascending order, the numbers in descending order.
@@ -39,7 +38,6 @@ Requirements:
 5. The main method should use the sort method.
 6. The sort() method should call the isGreaterThan() method.
 7. The sort() method should call the isNumber() method.
-
 */
 
 public class Solution {
@@ -61,55 +59,73 @@ public class Solution {
     }
 
     public static void sort(String[] array) {
-        // write your code here
-        ArrayList<Integer> numbers = new ArrayList<>();
-        ArrayList<String> strings = new ArrayList<>();
-        for (String item : array) {
-            if (isNumber(item))
-                numbers.add(Integer.parseInt(item));
-            else
-                strings.add(item);
+        //Делаем 3 массива: 1 - массив слов, 2 - массив чисел, 3 - массив с порядком
+        // (слово или число, что бы после сортировок правильно расставить)
+        ArrayList<String> words = new ArrayList<>(); //слова
+        ArrayList<Integer> numbers = new ArrayList<>(); //числа
+        ArrayList<String> por = new ArrayList<>(); //порядок и тип
+        for (int i = 0; i < array.length; i++) { //раскидываем слова и числа по разным массивам, у каждого свой
+            if (isNumber(array[i])) {
+                numbers.add(Integer.parseInt(array[i]));
+                por.add("n");
+            } else {
+                words.add(array[i]);
+                por.add("w");
+            }
         }
-        int nums[] = new int[numbers.size()];
-        for (int i = 0; i < numbers.size(); i++) {
-            nums[i] = numbers.get(i);
-        }
-        String strs[] = new String[strings.size()];
-        Arrays.sort(nums);
-        strs = strings.toArray(strs);
-        Arrays.sort(strs);
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = i; j < nums.length - 1; j++) {
-                if (isGreaterThan(strs[i], strs[j])) {
-                    String s = strs[j];
-                    nums[j] = nums[i];
-                    strs[i] = s;
+
+        for (int i = 0; i < numbers.size() - 1; i++) { //сортируем числа по убыванию
+            for (int j = 0; j < numbers.size() - 1; j++) {
+                if (numbers.get(j) < numbers.get(j + 1)) {
+                    int tmp = numbers.get(j);
+                    numbers.set(j, numbers.get(j + 1));
+                    numbers.set(j + 1, tmp);
                 }
             }
         }
-        for (int i = 0; i < nums.length; i++) {
-            int j = i * 2;
-            array[j] = strs[i];
-            array[j + 1] = "" + nums[nums.length - i - 1];
+
+        for (int i = 0; i < words.size() - 1; i++) { //сортируем слова по возрастанию
+            for (int j = 0; j < words.size() - 1; j++) {
+                if (isGreaterThan(words.get(j), words.get(j + 1))) {
+                    String tmp = words.get(j);
+                    words.set(j, words.get(j + 1));
+                    words.set(j + 1, tmp);
+                }
+            }
+        }
+        //Итераторы для массива array, для массива со словами и для массива с числами
+        int arIt = 0;
+        int worIt = 0;
+        int numIt = 0;
+        //после всех сортировок закидываем массивы со словами и числами в массив array, созраняя при этом порядок введения
+        for (int i = 0; i < por.size(); i++) {
+            if (por.get(i).equals("n")) {
+                array[arIt] = Integer.toString(numbers.get(numIt));
+                arIt++;
+                numIt++;
+            } else {
+                array[arIt] = words.get(worIt);
+                arIt++;
+                worIt++;
+            }
         }
     }
 
-    // String comparison method: 'a' is greater than 'b'
+    // Метод для сравнения строк: 'а' больше чем 'b'
     public static boolean isGreaterThan(String a, String b) {
         return a.compareTo(b) > 0;
     }
 
 
-    // Is the passed string a number?
+    // Переданная строка - это число?
     public static boolean isNumber(String s) {
         if (s.length() == 0) return false;
 
         char[] chars = s.toCharArray();
         for (int i = 0; i < chars.length; i++) {
             char c = chars[i];
-            if ((i != 0 && c == '-') // The string contains a hyphen
-                    || (!Character.isDigit(c) && c != '-') // or is not a number and doesn't start with a hyphen
-                    || (i == 0 && c == '-' && chars.length == 1)) // or is a single hyphen
+            if ((i != 0 && c == '-') // есть '-' внутри строки
+                    || (!Character.isDigit(c) && c != '-')) // не цифра и не начинается с '-'
             {
                 return false;
             }
