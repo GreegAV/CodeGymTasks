@@ -28,10 +28,10 @@ public class Solution {
 
     public static String getObjectType(Object o) {
         //write your code here
-
-        return o.getClass().getSimpleName().equals("Cow") ? "Cow" :
-                o.getClass().getSimpleName().equals("Dog") ? "Dog" :
-                        o.getClass().getSimpleName().equals("Whale") ? "Whale" :
+        String className = o.getClass().getSimpleName();
+        return className.equals("Cow") ? "Cow" :
+                className.equals("Dog") ? "Dog" :
+                        className.equals("Whale") ? "Whale" :
                                 "Unknown Animal";
     }
 
