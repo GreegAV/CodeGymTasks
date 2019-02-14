@@ -10,7 +10,6 @@ Player and Dancer
 - the play method if the person is a Player.
 - the dance method if the person is a Dancer.
 
-
 Requirements:
 1. The Player class must implement the Person interface.
 2. The Dancer class must implement the Person interface.
