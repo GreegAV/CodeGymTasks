@@ -53,7 +53,6 @@ public class Solution {
 
     public static void processCastObjects(List<Number> list) {
         for (Number object : list) {
-            //Исправь 2 ошибки
             if (object instanceof Float) {
                 Float a = (Float) object;
                 System.out.println("Is float defined? " + !(a.isNaN()));
